@@ -45,7 +45,18 @@ py manage.py runserver
 
 
 
+NOTE
 
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    #This is the path in the url
+    # The views is what we use to direct that get response to the named view
+   # The nameis just used as an identifier
+    path('members', views.members, name='members'),
+    path('king',views.king,name="King")
+]
 
 
 
