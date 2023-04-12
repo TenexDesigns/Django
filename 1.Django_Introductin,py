@@ -10,6 +10,20 @@ Django emphasizes reusability of components, also referred to as DRY (Don't Repe
 and comes with ready-to-use features like login system, database connection and CRUD operations (Create Read Update Delete).
 
 
+Django is a batteries included  framework. Meaning that it comes with a lot of features out of the box, so we don't have to code them from scratch.
+
+These features include
+  --Admin site
+  -- Object-relational mapper (ORM)
+  -- Authentication
+  -- Caching
+  
+  Since django oofers all of theis features , we can focus on our application and itsrequirements.
+  We don't have to reivent the wheel and code all of this stuff from scratch
+
+
+
+
 Django is especially helpful for database driven websites.
 
 
