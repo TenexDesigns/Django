@@ -28,17 +28,25 @@ Django creates a folder named members in my project, with this content:
   my_tennis_club
     manage.py
     my_tennis_club/
+                    -----------------------------> This is the django app. All djsngo apps have the same exact structure i.e they all have migrations folder,admin.py files and e.t.c
     members/
-        migrations/
+        migrations/ ----------------------------->   This folder is used for generating database tables
             __init__.py
         __init__.py
-        admin.py
-        apps.py
-        models.py
-        tests.py
-        views.py
+        admin.py  -------------------------------> Where we define how the admin interface of this app will look like               //
+        apps.py --------------------------------->  Where we configure this app
+        models.py ---------------------------------> Where we define the model classes for this app. We use model classes to pull data from the databases and present it to the user
+        tests.py ---------------------------------> Where we write our unit tests
+        views.py ---------------------------------> This is like a request handler
 
 
+         
+         
+         We created this app, now we need to registerr this app in th settings module.
+         Everytime you create an app, you need to regester it in the list of installed apps.
+         You simply add the name of the app and save the changes
+         
+         
 
 These are all files and folders with a specific meaning. You will learn about most of them later in this tutorial.
 
