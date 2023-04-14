@@ -112,7 +112,7 @@ django-admin startproject my_tennis_club
 Django creates a my_tennis_club folder on my computer, with this content:
 
 my_tennis_club
-    manage.py         --- This is a wrapper around django admin.So going forward instead of using django admin, we are going to use manage.py.because manage.py takes the settings of the appp into consideration
+    manage.py         --- This is a wrapper around django admin.So going forward instead of using django admin, we are going to use manage.py because manage.py takes the settings of the appp into consideration. for example to run a server  instead of doing django-admin  runserver , we are going to do it like "py manage.py runserver" . This is because django at this point doen't know about the settings of our project.
     my_tennis_club/
         __init__.py   --- Defines this directory as a package
         asgi.py                                                          --- Used for deployment
@@ -143,6 +143,15 @@ Navigate to the /my_tennis_club folder and execute this command in the command p
 
 
 Open a new browser window and type 127.0.0.1:8000 in the address bar.
+ if you run  py manage.py runserver without specifying a port e.g    py manage.py runserver 9000, by default 
+
+  
+  
+  
+  
+  
+  
+  
   
   
   We have a Django project!
