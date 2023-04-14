@@ -112,13 +112,13 @@ django-admin startproject my_tennis_club
 Django creates a my_tennis_club folder on my computer, with this content:
 
 my_tennis_club
-    manage.py
+    manage.py         --- This is a wrapper around django admin.So going forward instead of using django admin, we are going to use manage.py.because manage.py takes the settings of the appp into consideration
     my_tennis_club/
-        __init__.py
-        asgi.py
-        settings.py
-        urls.py
-        wsgi.py
+        __init__.py   --- Defines this directory as a package
+        asgi.py                                                          --- Used for deployment
+        settings.py   --- where we define our application settings
+        urls.py       --- Where we define the urls of our application
+        wsgi.py                                                          --- Used for deplayment
 
 
 These are all files and folders with a specific meaning, you will learn about some of them later in this tutorial,
