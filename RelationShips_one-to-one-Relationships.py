@@ -1,7 +1,7 @@
 
 DEFINING ONE TO ONE FIELD RELATIONSHIP
 ******************************************************************************************************************************
-
+Note -> Django always creates the reverse relationship from one table to another, so there is no need for us, to do it.
 
 my_tennis_club
     manage.py
@@ -141,6 +141,45 @@ class Book(models.Model):
 
 
 
+MANY TO MANY RELATIONSHIPS.
+******************************************************************************************************************************
+
+
+
+
+Here we are going to create a  Promotion  model class a products model class.
+Here the product can have difffreent promaotions and a a promation can be on different products
+
+
+
+
+class Promotion (models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    
+    
+    
+
+class Products (models.Model):
+    title= models.CharField(max_length=255)
+    description = models.CharField(max_length=255)    
+    promotions = models.ManyToManyField()
+
+
+
+______________________________________________________Here is some more explanation
+
+Many-to-Many Relationship:
+A many-to-many relationship is defined using a ManyToManyField field. For example, if you have a Book model and a Tag model, and each book can have multiple tags and each tag can be associated with multiple books, you can define a many-to-many relationship between the models like this:
+
+python
+Copy code
+class Tag(models.Model):
+    name = models.CharField(max_length=100)
+
+class Book(models.Model):
+    title = models.CharField(max_length=200)
+    tags = models.ManyToManyField(Tag)
 
 
 
@@ -152,44 +191,53 @@ class Book(models.Model):
 
 
 
+CIRCULAR RELATIONSHIP
+
+******************************************************************************************************************************
+
+
+A circular relationship is a type of relationship where two models have a many-to-many relationship with each other.
+To define a circular relationship in Django, you can use the ManyToManyField field and specify the "self" option as the target model. For example,
+if you have a Person model and each person can have multiple friends, and each friend is also a Person, you can define a circular relationship like this:
+
+
+
+
+
+class Person(models.Model):
+    name = models.CharField(max_length=100)
+    friends = models.ManyToManyField('self')
 
 
 
 
 
 
+GENERIC RELATIONSHIP
+******************************************************************************************************************************
+  A generic relationship is a type of relationship where a model can be related to any other model.
+    Its defined using the GenericForeignKey field. For example, if you have a Comment model that 
+    can be associated with any other model in your app (e.g., a BlogPost model, a Photo model, etc.), you can define a generic relationship like this:
+
+
+
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
+
+class Comment(models.Model):
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+    text = models.TextField()
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+In this example, the content_type field is a foreign key to the ContentType model, 
+which is a built-in Django model that represents the type of a content object (e.g., a BlogPost object, a Photo object, etc.).
+The object_id field is an integer field that stores the ID of the related object. 
+The content_object field is a GenericForeignKey field that allows you to retrieve the related object using
 
 
 
