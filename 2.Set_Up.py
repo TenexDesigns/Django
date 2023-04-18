@@ -124,8 +124,192 @@ my_tennis_club
 These are all files and folders with a specific meaning, you will learn about some of them later in this tutorial,
 but for now, it is more important to know that this is the location of your project, and that you can start building applications in it.
 
+CONTINUES HERE__________________________________________________________________________________________________________________________________________________________
+FOR EXAMPLE IN THE SETTINGS.PY FILE WE HAVE a section of code for installed app
 
 
+# Application definition
+
+// Thse are all app used in djabgo with their own functionality
+
+INSTALLED_APPS = [
+    # each app has its own functionality, we can even create ou own apps.
+    'django.contrib.admin',# Gives us an admin interface for managing our data
+    'django.contrib.auth',# Used for authenticatin users
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',# we do'nt use sessions any more ,as it is kind of legacy
+    'django.contrib.messages',# used for displaying one time notifications to the user
+    'django.contrib.staticfiles',# used for sefing static files , like images ,css files and so on
+     'stores'  // Here we regester the app that we create
+
+
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CONTINUES HERE__________________________________________________________________________________________________________________________________________________________
 
 
 
