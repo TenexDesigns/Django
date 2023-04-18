@@ -45,7 +45,45 @@ Django creates a folder named members in my project, with this content:
          We created this app, now we need to registerr this app in th settings module.
          Everytime you create an app, you need to regester it in the list of installed apps.
          You simply add the name of the app and save the changes
+   
+
+
+
+  my_tennis_club
+    manage.py
+    my_tennis_club/
+         settings.py
          
+         
+         # Application definition
+
+INSTALLED_APPS = [
+    # each app has its own functionality, we can even create ou own apps.
+    'django.contrib.admin',# Gives us an admin interface for managing our data
+    'django.contrib.auth',# Used for authenticatin users
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',# we do'nt use sessions any more ,as it is kind of legacy
+    'django.contrib.messages',# used for displaying one time notifications to the user
+    'django.contrib.staticfiles',# used for sefing static files , like images ,css files and so on
+     'members'  # Here we regester the app that we created
+
+
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
          
 
 These are all files and folders with a specific meaning. You will learn about most of them later in this tutorial.
