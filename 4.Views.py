@@ -25,11 +25,14 @@ Find it and open it, and replace the content with this:
 
                        from django.shortcuts import render
                        from django.http import HttpResponse
-
+          
+          
+          
+                      # This is a view function that takes in a request i.e (the request between the brackets of the function) and returna a httpresponser
                        def members(request):
                           # Here we can  send data,  Pull data from database, Transform data and e.t.c
                             return HttpResponse("Hello world!")
-
+                           # All views must return a httpresponse
 
 
 
