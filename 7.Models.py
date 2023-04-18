@@ -37,6 +37,48 @@ class Member(models.Model):
 The second field, lastname, is also a Text field, with the member's last name.
 
 Both firstname and lastname is set up to have a maximum of 255 characters.
+
+
+HERE IS SOME MORE EXPLANATION ABOUT THE FIELDS TO BE INPUT INTO THE COLUMNS OF THE TABLE -> You can get more informarion on this by searching for (django field types) on google , or by going to this website  'https://docs.djangoproject.com/en/4.2/ref/models/fields/'
+**************************************************************************************************************************************************
+
+
+from django.db import models
+
+class Product(models.Model):
+    title = models.CharField(max_length =255)# This generates a table with a column of data type of varchar(255)
+    description = models.TextField()# This does not have any arguments, so we don't have to set the max number of characters
+    price = models.DecimalField(max_digits=6,decimal_places=2)#This two arguments are always required for decimals # Always use decimal for monetary values. FloatFiels() have rounding issues , so always use decimalField
+    #DecimalField(6,2) - This means that tis allows a maximaum of 6 digits , two of which are decimal, So the maximum number that can be held by this value is 9999.99. This are six degits, two of which are decimals.
+    inventory = models.IntegerField()
+    last_update = models.DateTimeField(auto_now =True)# When you put auto_now = true, Djabgo automaticaly saves the current date time, when you update a producti in this field
+    first_created = models.DateTimeField(auto_now_add =True)# Django fills in this fieled the first time we create an order
+
+
+
+    
+    # We don't have an id column for us in this tables.
+# This is because django creates them for us automaticaly
+# So every entity or model class is going to have a primary key automaticaly called the id field
+# But what if we dont want an id field, What if we want another column to be the primary key.
+#to do that we just create a colmn and assign it the (primary Key = True) lable
+#e.g exam_postion = models.CharField(max_lenght = 10, primary_key = True)  With this, the exam postion is going to be our primary key and django will not creae an id column to be our primary key.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   
   
