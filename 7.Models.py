@@ -1,4 +1,6 @@
 A Django model is a table in your database.
+In Django, a model is a Python class that represents a database table. 
+Each attribute of the class represents a field in the database table, and each instance of the class represents a row in the table.
 
 
 Django Models
@@ -135,6 +137,38 @@ py manage.py sqlmigrate members 0001
 
 
 
+HERE IS MORE EXPLANATION
+*******************************************************************************************************************************************
+
+
+In Django, a model is a Python class that represents a database table.
+Each attribute of the class represents a field in the database table, and each instance of the class represents a row in the table.
+
+Heres an example of how to create a simple model for a blog post:
+
+
+
+
+from django.db import models
+
+class Post(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    pub_date = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+
+
+
+
+    
+    In this example, the Post model has four fields:
+
+title: a CharField that represents the title of the blog post.
+content: a TextField that represents the content of the blog post.
+pub_date: a DateTimeField that represents the publication date of the blog post.
+  The auto_now_add=True argument ensures that the current date and time are automatically set when a new Post instance is created.
+author: a ForeignKey that represents the author of the blog post.
+  This field is a reference to the built-in User model in Django's authentication system.
 
 
 
@@ -142,29 +176,23 @@ py manage.py sqlmigrate members 0001
 
 
 
+To use this model in your Django application, 
+youll need to include it in your apps models.py file and run the following command to create the corresponding database table:
+
+
+python manage.py makemigrations
+python manage.py migrate
 
 
 
 
 
 
+These commands will create a database table called myapp_post (assuming your app is called myapp),
+with fields that correspond to the attributes of the Post class.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+You can then interact with the Post model in your views, templates,
+and other parts of your Django application using Djangos powerful ORM (object-relational mapping) system.
 
 
 
