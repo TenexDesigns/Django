@@ -32,6 +32,32 @@ my_tennis_club/members/templates/myfirst.html:
 </html>
 
 
+WAYS TO RENDER THE HTML CONTENT
+
+1. USING THE RENDER FUNCTION
+*****************************************************************************************************************************
+
+Open the views.py file and replace the members view with this:
+
+my_tennis_club/members/views.py:
+
+from django.http import HttpResponse
+from django.shortcuts import render
+
+/*
+   #The render() function takes in some parameters, and returns a http response. So our view function won't have an error , since the view function is supposed to retunr a http respone
+   #The first parameter being a request object
+   #The second  parameter being the html file we wish to give back
+   #The third is a context which takes in key value pairs. The key is a string ,but the value is of any datatype e.g return render(request,'hellow.html',{'name'}:'George','age':21,'maried':false)   . This values in our context can be used in the html by using double braces e.g {{name}}
+
+*/
+
+def members(request):
+  return render(request,'hellow.html')
+
+
+
+
 
 Modify the View
 *****************************************************************************************************************************
