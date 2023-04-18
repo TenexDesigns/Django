@@ -1,3 +1,7 @@
+THERE IS A MORE CONSICE EXPLANATION AT THE BOOTTOM
+
+
+
 URLs
 *********************************************************************************************************************************************8
 Create a file named urls.py in the same folder as the views.py file, and type this code in it: We can name it anything , but by convection, we call it , urls.py
@@ -18,7 +22,7 @@ from . import views              // From the current folder , import the viws fo
     
     
   # This below is a url configuration 
-  # Each app can have its own url configuration
+  # Every app can have its own url configuration
   # Now we need to import this url configuration into the main url configuration of this project
 
     
@@ -81,7 +85,26 @@ WHENEVER WE MAKE  ANY CHANGES IN YOUR CODE ,THE SERVER RESTARTS ITSELF
 
 
 
+*********************************************************************************************************************************************8
+THIS IS THE MORE CONSCISE EXPLANTION AT THE BOTTOM
 
+
+
+
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+    3. The part we put inside the include() function refers to the app we want the url to go. i.e it refers to the apps urls e.g memebers.urls # This refers to the urls file of our app. Meaning all request  in e.g blog/ willbe dirrected to our apps url.py file to be handled there   
+    4.  NOTE --> wE ALWAYS END OUR ROUTS WITH A BACK SLASH    
+        
+
+from django.contrib import admin
+from django.urls import path,include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('members/', include('stores.urls')),
+]
 
 
 
