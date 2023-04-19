@@ -1,5 +1,5 @@
-Migrations
-
+ CREATING Migrations
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 In django we use migrations to create and update our databases tables based offf of the models we have in our project.
 So in django, we are not going to manually create and modifiy our database tables, we are going to let django take care of that through the migrations.
 
@@ -33,6 +33,17 @@ my_tennis_club
 
 SOME TIMES YOU MIGHT MAKE CHANGES TO THE MODELS CLASSES IN YOUR APP, THEN TRY TO RUN MIGRATIONS, AND SEE THAT THE MOGRATIONS HAVE NOT BEEN IMPLEMENTED.
  This may be, because you have not listed that app in the list of installed aps,
+    
+    
+    RUNNIN MIGRATIONS
+    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    
+    To apply the migrations to your database, you can use the migrate command. 
+This command is responsible for applying and unapplying migrations, ensuring that the database schema is in sync with your models docs.djangoproject.com.
+    
+    ----------------------------> python manage.py migrate
+    
+    
 
 
 
