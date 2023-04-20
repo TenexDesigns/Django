@@ -18,6 +18,15 @@ update() - Updates one or more records that match the specified criteria.
 delete() - Deletes one or more records that match the specified criteria.
 values() - Returns a QuerySet containing a subset of fields for each record.
 order_by() - Returns a QuerySet containing the records sorted by one or more fields.
+values() - Returns a QuerySet containing a subset of fields for each record.
+order_by() - Returns a QuerySet containing the records sorted by one or more fields.
+annotate() - Returns a QuerySet containing calculated fields for each record.
+select_related() - Returns a QuerySet with related objects preloaded.
+values_list() - Returns a QuerySet containing a tuple of values for each record.
+distinct() - Returns a QuerySet containing unique records.
+values_queryset() - Returns a QuerySet containing related objects.
+raw() - Returns a QuerySet containing raw SQL queries.
+
 
 
 
