@@ -4,6 +4,7 @@ Django comes with several built-in field types, which are described below along 
 
 
 1.CharField: This field is used for storing a string of characters, such as a name or description.
+   A field for storing character data. It requires the max_length attribute to be set, which defines the maximum number of characters allowed
   Example:
     
   
@@ -16,6 +17,7 @@ class Book(models.Model):
 
     
 2. TextField: This field is used for storing larger amounts of text, such as a books content or a blog post.
+  A field for storing large text data without a maximum length limit
   Example:
     
   
@@ -57,6 +59,7 @@ class User(models.Model):
     
     
 5.BooleanField: This field is used for storing boolean values, such as whether a user has agreed to terms and conditions or not.
+  : A field for storing boolean values (True or False).
   Example:
     
   
@@ -70,6 +73,8 @@ class User(models.Model):
     
     
 6.DateField: This field is used for storing dates, such as a users birthday or the date a product was added to the database. 
+   A field for storing date values. It can also store dates with the auto_now and auto_now_add attributes for automatically
+    updating the date on save and creation, respectively.
   Example:
     
   
@@ -133,6 +138,8 @@ class Document(models.Model):
     
     
 11.ImageField: This is used to upload and store image files.
+  A field for storing uploaded images. Its a subclass of FileField and has the same attributes.
+  Additionally, it ensures that the uploaded file is a valid image file.
 Example:
   
   from django.db import models
@@ -144,6 +151,8 @@ class Photo(models.Model):
     
     
 12.ForeignKey: This is used to create a many-to-one relationship between two models.
+  A field for creating a one-to-many relationship between two models. 
+  It requires the on_delete attribute to specify the behavior when the referenced object is deleted.
   
   
   Example:
@@ -157,11 +166,20 @@ class Author(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=100)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    
+    
+    
+    
+12.OneToOneField: A field for creating a one-to-one relationship between two models. Like ForeignKey, it requires the on_delete attribute.
+
+  profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
 
   
   
   
 13.ManyToManyField: This is used to create a many-to-many relationship between two models.
+  A field for creating a many-to-many relationship between two models. 
+  It doesnt require the on_delete attribute since the relationship is managed through an intermediary table.
     
 Example:
   
@@ -180,6 +198,8 @@ class Article(models.Model):
     
     
 14.DecimalField: This is used to store decimal numbers with a specified precision.
+  A field for storing fixed-point decimal numbers. It requires max_digits and decimal_places attributes to be set. max_digits is the total number of digits,
+  and decimal_places is the number of digits after the decimal point.
   
 Example:
   
