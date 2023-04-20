@@ -1,4 +1,9 @@
 In Django, Q objects can be used to create complex queries with logical operators.
+
+TO USE THE Q OBJECT YOU HAVE TO IMPORT IT
+
+   from django.db.models import Q
+
 Here are some examples of complex lookups using Q objects in Django:
 
 
