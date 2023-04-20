@@ -39,6 +39,8 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.IntegerField()
 
+PositiveIntegerField: A field for storing positive integer values (including zero). Its a subclass of IntegerField.
+  positive_number = models.PositiveIntegerField()
 
 
 
@@ -95,6 +97,7 @@ class BlogPost(models.Model):
     
     
 8.EmailField: This is used to store email addresses.
+  : A field for storing email addresses. Its a subclass of CharField and includes built-in email validation.
   
 Example:
     
@@ -240,6 +243,8 @@ class Server(models.Model):
     
     
  19.SlugField: This is used to store a short label or identifier, typically used in URLs.
+  A field for storing short labels or slugs, typically for use in URLs.
+  Its a subclass of CharField and includes built-in slug validation.
   
 Example
 
@@ -288,6 +293,8 @@ class Order(models.Model):
 
     
  23.PositiveSmallIntegerField: This is used to store positive small integers.
+   A field for storing positive small integer values (including zero).
+    Its a subclass of IntegerField and is more memory-efficient for small integers. 
   
 Example:
   
@@ -320,6 +327,8 @@ class Book(models.Model):
     
     
 26.UUIDField: This is used to store universally unique identifiers.
+  A field for storing universally unique identifiers (UUIDs). 
+  It can generate UUIDs automatically when a new object is created by setting the default attribute to uuid.uuid4
   
 Example:
   
@@ -332,14 +341,26 @@ class User(models.Model):
 
   
   
+27.URLField: A field for storing URLs. Its a subclass of CharField and includes built-in URL validation.
+  
+website = models.URLField()
+
+  
+  
+28. JSONField: A field for storing JSON data. It can store any JSON-serializable data type,
+  such as lists, dictionaries, strings, numbers, booleans, and null. stackoverflow.com
+  
+metadata = models.JSONField()  
   
   
   
+29.Custom Field: You can create your own custom field types by subclassing the Field class or one of the built-in field classes.
+  Heres an example of a custom field for storing unsigned integers in MySQL.
   
   
-  
-  
-  
+class UnsignedIntegerField(models.IntegerField):
+    def db_type(self, connection):
+        return 'integer UNSIGNED'
   
   
   
