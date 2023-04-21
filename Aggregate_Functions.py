@@ -30,7 +30,7 @@ average = MyModel.objects.aggregate(Avg('field_name'))
 
 
 
-Max: Returns the maximum value of a specified field.
+Max: Returns the maximum value of a specified field..
   
   from django.db.models import Max
 from myapp.models import MyModel
