@@ -198,11 +198,22 @@ def inventory_sstatus(self, product):
 
 
 
+  
+  
+  
+
+ADDING SEARCH TO THE LIST PAGE
+***************************************************************************************************************************************
 
 
 
-
-
+@admin.register(models.Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['title','unit_price','inventory_status']  // This will diplay the declared columns including own customised column that displays what we described in the inventory stattus function
+    list_editable = ['unit_price']         // This will make the declared column to be editable
+    list_per_page = 10                    // This makes there to be pagination on the admin site for this model
+    ordering = ['first_name','last_name']
+    search_fields = ['first_name','last_name'] // Here we put this fields to be able to be searchable . But to make them even more optimsesd we can add this  #search_fields = ['first_name__istartswit','last_name__istartswith']. This will make this searchable field to be case insesistive.
 
 
 
