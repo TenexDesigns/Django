@@ -144,6 +144,27 @@ urlpatterns = [
 
 
 
+***************************************************************************************************************************************
+
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['title','unit_price']
+
+admin.register(models.Product,ProductAdmin) 
+
+
+
+***************************************************************************************************************************************
+
+
+@admin.register(models.Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['title','unit_price']  // This will diplay the declared columns
+    list_editable = ['unit_price']         // This will make the declared column to be editable
+    list_per_page = 10                    // This makes there to be pagination on the admin site for this model
+    ordering = ['first_name','last_name']
+
+
+To get a list of all customisations you can do, google the django admin model.
 
 
 
@@ -152,32 +173,28 @@ urlpatterns = [
 
 
 
+ADDING COMPUTED COLUMNS
+***************************************************************************************************************************************
 
 
 
 
 
 
+@admin.register(models.Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['title','unit_price','inventory_status']  // This will diplay the declared columns including own customised column that displays what we described in the inventory stattus function
+    list_editable = ['unit_price']         // This will make the declared column to be editable
+    list_per_page = 10                    // This makes there to be pagination on the admin site for this model
+    ordering = ['first_name','last_name']
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@admin.display(ordering ='inventor')// This will what will be used incase we want to order this new coumn.
+def inventory_sstatus(self, product):
+    if prodct.inventory < 10:
+       return 'low'
+    return 'OK'
 
 
 
