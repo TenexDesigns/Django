@@ -110,7 +110,55 @@ The only time a qeyset is implamented is fit
         
         Some methods do not retun query sets such as count(). Since the result is small and not much operations can be done on it.
         
-        
+        explain query set in django with code samples and them being lazy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     
+In Django, a query set is a collection of database objects or rows that have been retrieved from the database based on a certain set of conditions or filters. 
+A query set is essentially a lazy representation of the database objects, which means that the actual database query is not executed until the query set is evaluated.
+This approach provides several benefits such as reduced memory usage, improved performance, and better optimization.
+
+Here is an example code that demonstrates the use of a query set in Django:
+ 
+ 
+ # Import the necessary modules
+from django.db import models
+
+# Define a model
+class Book(models.Model):
+    title = models.CharField(max_length=255)
+    author = models.CharField(max_length=255)
+    published_date = models.DateField()
+
+    def __str__(self):
+        return self.title
+
+# Create a query set
+book_queryset = Book.objects.filter(published_date__year=2022)
+
+# Iterate over the query set
+for book in book_queryset:
+    print(book)
+
+
+  In this example, we define a model named Book with three fields: title, author, and published_date. We then create a query set by filtering all 
+   the books whose published_date is in the year 2022. 
+   This query set is lazy, meaning that the database query is not executed at this point.
+   
+   
+   Next, we iterate over the query set to retrieve each book object that meets our filter condition. 
+   The actual database query is executed during the iteration process. The __str__() method of the Book model is used to print the book's title.
+   
+   
+   One of the benefits of using a lazy query set is that we can chain multiple filters together to further narrow down our results without actually executing the query until we evaluate the query set.
+   For example:
+
+    book_queryset = Book.objects.filter(published_date__year=2022).filter(author="J.K. Rowling")
+
+    This query set will only retrieve books published in 2022 and written by J.K. Rowling, but the database query will not be executed until we evaluate the query set.
+    
+    In summary, a query set in Django is a lazy collection of database objects that can be filtered, sliced, and ordered without actually executing the query until the query set is evaluated.
+    This approach provides several benefits, including improved performance and reduced memory usage.
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     
         
         
 Heres an example of how you might use a QuerySet to filter records:
