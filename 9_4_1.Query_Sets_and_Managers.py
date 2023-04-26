@@ -15,6 +15,21 @@ This manage acts as an interface between our django app and our database.
 
 Note -> That when we run most of this methods , we dont get the actual data , insted we get a guery set
 i.e dataFormDatabase = ProductModel.objects.all() --> Here the dataFromDataBase is a quey set insted of the actual data.
+This means that the return query set is lazy, i.e has not been implemented, We can thus even implement adtional fileters on the retyurnd query e.g 
+ dataFormDatabase = ProductModel.objects.all() 
+  datafromDatabase.filter(age>5).filter(gender=male)  
+The only time a qeyset is implamented is fit
+1.It is converted
+   dataFormDatabase = ProductModel.objects.all() 
+    list(datafromdatabase)
+ 2.When sliced or you access an individual element
+    dataFormDatabase = ProductModel.objects.all() 
+    datafromDatabase[0:6]---------------------------Sliced
+    datafromDatabase[0:6]---------------------------Access single item
+3. When the queryset is terated over or looped
+ dataFormDatabase = ProductModel.objects.all() 
+    for product in datafromdatabase:
+        print(product)
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 from StoreApp import ProductModel
@@ -67,9 +82,37 @@ QuerySets are objects that represent a collection of records from a database tab
 QuerySets are returned by the managers query methods. QuerySets provide a way to chain multiple queries together,
 allowing you to filter, exclude, and order records as needed.
 
+In this example the manager comes after the ProductModel.objects  . This gives us many methods to access the data from the database seuc as
+ProductModel.objects.all()   -- To Get alll the dtaa from the database
+ProductModel.object.get(pk=1) - Returns a single record that matches the specified criteria.
+and many more discussed here below.
+This manage acts as an interface between our django app and our database.
+
+Note -> That when we run most of this methods , we dont get the actual data , insted we get a guery set
+i.e dataFormDatabase = ProductModel.objects.all() --> Here the dataFromDataBase is a quey set insted of the actual data.
+This means that the return query set is lazy, i.e has not been implemented, We can thus even implement adtional fileters on the retyurnd query e.g 
+ dataFormDatabase = ProductModel.objects.all() 
+  datafromDatabase.filter(age>5).filter(gender=male)  
+The only time a qeyset is implamented is fit
+1.It is converted
+   dataFormDatabase = ProductModel.objects.all() 
+    list(datafromdatabase)
+ 2.When sliced or you access an individual element
+    dataFormDatabase = ProductModel.objects.all() 
+    datafromDatabase[0:6]---------------------------Sliced
+    datafromDatabase[0:6]---------------------------Access single item
+3. When the queryset is terated over or looped
+ dataFormDatabase = ProductModel.objects.all() 
+    for product in datafromdatabase:
+        print(product)
 
 
-
+        
+        Some methods do not retun query sets such as count(). Since the result is small and not much operations can be done on it.
+        
+        
+        
+        
 Heres an example of how you might use a QuerySet to filter records:
   
   # Get all records where the name starts with 'J'
