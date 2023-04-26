@@ -2,10 +2,26 @@
 
 
 In Django ORM, a manager is a Python class that provides methods for querying the database. 
-A manager is associated with a model class, and is responsible for performing queries on that model's database table.
+A manager is associated with a model class, and is responsible for performing queries on that models database table.
 
 When you define a model in Django, a default manager is created for you automatically.
 This manager provides basic query methods like all(), filter(), and get().
+
+In this example the manager comes after the ProductModel.objects  . This gives us many methods to access the data from the database seuc as
+ProductModel.objects.all()   -- To Get alll the dtaa from the database
+ProductModel.object.get(pk=1) - Returns a single record that matches the specified criteria.
+and many more discussed here below.
+This manage acts as an interface between our django app and our database.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+from StoreApp import ProductModel
+
+
+def GetDataFromDataBase:
+    dataFormDatabase = ProductModel.objects.all()
+    
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
+
+
 However, you can also define your own custom managers that provide additional query methods or modify the behavior of the default manager.
 
 Heres an example of a custom manager that returns only active records:
