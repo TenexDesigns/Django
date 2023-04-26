@@ -304,9 +304,14 @@ Model.objects.filter(name__isnull=True)
 regex - Filters objects where the value of the field matches the specified regular expression.
 Model.objects.filter(name__regex=r'^(J|B).*n$')
 
+We can also use the table names in our model
+---------------------------------------------------------------------------------------------------
 
 
+products = Product.objects.filter(collection__id =1)   -- This Gets the collection whose id is one
 
+
+products = Product.objects.filter(collection__id__range =(3:9))   -- This Gets the collection whose id is between the range of 3 to 9
 
 
 
