@@ -29,6 +29,26 @@ raw() - Returns a QuerySet containing raw SQL queries.
 
 
 
+METHODS FOR RETRIVING DATA
+******************************************************************************************************************************************
+all()
+get()   - It is adviced to surround this method with a try block, because if the item to be gotten is not found, an error id thrown
+
+e.g try
+       qdata = Products.objects.get(pk=1)
+    else
+       print(''Product not found)
+
+******************************************************************************************************************************************
+
+
+
+
+
+
+
+
+
 
 
 
