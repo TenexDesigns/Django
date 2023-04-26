@@ -5,10 +5,12 @@ The filter() method is used to filter your search, and allows you to return only
 As we learned in the previous chapter, we can filter on field names like this:
 
 
-
+NOTE-> THE OBJECTS TO BE APPLIED THIS QUERY SET METHODS COME FROM YOUR APPS MODELS FOLDER. FOR EXAMPLE IF YOUR APP IS CALLED STORE, AND IT HAS A MODEL CALLED MEMEBERS THEN YU CAN IMPORT IT LIKE THIS
+from store.models import Product
 Example
 
 Return only the records where the firstname is 'Emil':
+  from store.models import Product
 
 mydata = Member.objects.filter(firstname='Emil').values()
 
@@ -34,6 +36,8 @@ The filter() method takes the arguments as **kwargs (keyword arguments), so you 
 Example
 
 Return records where lastname is "Refsnes" and id is 2:
+  
+  from store.models import Product
 
 mydata = Member.objects.filter(lastname='Refsnes', id=2).values()
 
@@ -75,7 +79,7 @@ Return records where firstname is either "Emil" or Tobias":
 
 from django.http import HttpResponse
 from django.template import loader
-from .models import Member
+from store.models import Member
 from django.db.models import Q
 
 def testing(request):
