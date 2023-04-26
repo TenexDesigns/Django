@@ -50,8 +50,6 @@ e.g try
 
 
 
-
-
 ******************************************************************************************************************************************
 
 For example, if you have a model called "Book" with attributes like "title", "author", "published_date", "price",
