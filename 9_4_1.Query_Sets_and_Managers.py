@@ -12,6 +12,10 @@ ProductModel.objects.all()   -- To Get alll the dtaa from the database
 ProductModel.object.get(pk=1) - Returns a single record that matches the specified criteria.
 and many more discussed here below.
 This manage acts as an interface between our django app and our database.
+
+Note -> That when we run most of this methods , we dont get the actual data , insted we get a guery set
+i.e dataFormDatabase = ProductModel.objects.all() --> Here the dataFromDataBase is a quey set insted of the actual data.
+
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 from StoreApp import ProductModel
 
