@@ -53,17 +53,50 @@ You will learn about URLs in the next chapter.
 
 
 
+To display the html file we created in the templates folder in our urls folder, we first hav to put that file in a http response in the vies,py file 
+******************************************************
+views.py
+
+from django.shortcuts import render
+from django.http import HttpResponse
+from stores.models import  Product
+
+# def members(request):
+#     # Here we can  send data,  Pull data from database, Transform data and e.t.c
+#     return render(request,'hellow.html',)
+
+def kimani(request):
+
+    return render(request,'hellow.html')
+
+
+**********************************************************
+urls.py
+
+from django.urls import path
+from . import views     
+
+
+# Here we map our urls to our view functions
+
+urlpatterns = [
+    path('book/', views.kimani)
+]
 
 
 
 
+********************************
+Finaly we have to include our  urls.py file in our projects url.py file
 
 
+from django.contrib import admin
+from django.urls import path,include
 
-
-
-
-
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('hellow/', include('store.urls')),
+]
 
 
 
