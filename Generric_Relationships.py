@@ -26,13 +26,14 @@ To use a generic relationship, you need to define two models: one for the object
 
 
 from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.models import ContentType # The contente type Model is used for allowing generic relationships
 from django.db import models
 
 class Comment(models.Model):
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type', 'object_id')
+   
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)# This gets the tuype of the model e.g #Type(Blogpost,video,products)
+    object_id = models.PositiveIntegerField() #ID - Of the target object.We assume every table has a posyive intgert primary key. So thi soluton won;'t work if the primary key of of any other type, such as Guui or characters.
+    content_object = GenericForeignKey('content_type', 'object_id') # This enables us to read the object the tag is appliet to
     text = models.TextField()
 
 
