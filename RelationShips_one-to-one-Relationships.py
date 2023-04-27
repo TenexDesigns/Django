@@ -1,18 +1,15 @@
 
 DEFINING ONE TO ONE FIELD RELATIONSHIP
 ******************************************************************************************************************************
-Note -> Django always creates the reverse relationship from one table to another, so there is no need for us, to do it.
 
-my_tennis_club
-    manage.py
-    my_tennis_club/
-    members/
-        migrations/
-            __init__.py
-        __init__.py
-        admin.py
-        apps.py
-              models.py
+Note -> When creating relationships, There iis a parent -child relationship.
+       You have to always defin the parent before the child model.
+       We define the relationship in the Child model 
+        e.g  Customer and address. A custmers has an address, Therefore the address exists  because there is a customer, So the customer is the parent class and the address is the child class. 
+        In case we want to define a one to one relationship, We define that relationship in the address model.
+        We weould also define a one to many relationship in the address classs in this was a one to many relationship,
+
+Note -> Django always creates the reverse relationship from one table to another, so there is no need for us, to do it.I.e When we created the relationship from  the address to the customer, Django automaticaly creates the reverse relationhip from the customer to the address
 
 
 
@@ -256,7 +253,34 @@ class Promotion (models.Model):
 class Products (models.Model):
     title= models.CharField(max_length=255)
     description = models.CharField(max_length=255)    
-    promotions = models.ManyToManyField()
+    promotions = models.ManyToManyField(Promotion)
+    
+    When we do this, Django creates a reverser relationship in the Promotion class.
+    The name given to that revers relationship will be 'Product_Set'.
+    We cab change the name of this relationsb by using 'related_name'
+    
+    class Products (models.Model):
+    title= models.CharField(max_length=255)
+    description = models.CharField(max_length=255)    
+    promotions = models.ManyToManyField(Promotion,'related_name'='Product_Reverse_Relationship')
+    
+    This above changes the naem of the reverse relationship to 'Product_Revere_Relationship'
+    
+    class Promotion (models.Model):
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    Product_Reverse_Relationship  --> Reverse relationship to Procust table
+    
+    
+    Note --> This is important because , we can even use a '+ ' to tell django not to create that reverse relationship
+    e.g 
+    
+    class Products (models.Model):
+    title= models.CharField(max_length=255)
+    description = models.CharField(max_length=255)    
+    promotions = models.ManyToManyField(Promotion,related_name='+')
+     
+    
     
    1. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
     Many-to-many relationship:
