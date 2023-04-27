@@ -174,7 +174,8 @@ as they allow you to create more complex relationships between models and provid
 table between two other tables in the database.
 
 
-The relationship between two items in a many to many relationship might have attributes, e.g in our product order relationship , we can put ur common attrbiutes like item quatity in a assoaciateive class.
+The relationship between two items in a many to many relationship might have attributes,
+e.g in our product, order relationship , we can put ur common attrbiutes like item quatity in a assoaciateive class.
 
 This is a many to many  relationship
 
@@ -203,6 +204,30 @@ product                   orders
 
 Here each oreder item is refernced by multiple orders , but an order can refernce only one order item , The same applie to procut 
 
+
+Here each oreder item is refernced by multiple orders , but an order can refernce only one order item , The same applie to procut 
+Here an one to many relationship in this case, Where an order item can can have multiple products but a product can only be in one order item.
+The same case for ordes,  An order can have multiple oreder items ,
+
+^^^^^^^^^^^^^^^^^^Choise Between ManayToMany or Asssciative Class ^^^^^^^^^^^^^^^^^^^^^^^
+
+The choice between using a ManyToManyField or an associative class to represent a many-to-many relationship 
+in Django depends on the specific requirements of your application.
+
+If you only need to store the relationship between two models and dont need any additional fields or metadata, 
+then using a ManyToManyField is simpler and more concise. The ManyToManyField handles the creation of the intermediate table behind the scenes,
+so you dont have to define an additional model.
+
+However, if you need to store additional information about the relationship or if you need to add custom fields to the intermediate table,
+then using an associative class is the way to go. By using an associative class, you have complete control over
+the intermediate table and can define custom fields as needed.
+
+In the example I provided earlier, we used an associative class (BookAuthor) to define the many-to-many 
+relationship between the Book and Author models because we needed to store additional information about 
+the relationship (i.e., the created_at field). If we didnt need this information, we could have used a ManyToManyField instead.
+
+So, in summary, the choice between using a ManyToManyField and an associative class depends on your specific requirements for the relationship.
+If you need additional fields or metadata, then an associative class is the way to go. If you dont, then a ManyToManyField is simpler and more concise.
 
 
 
