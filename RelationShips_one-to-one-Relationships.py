@@ -13,6 +13,29 @@ Note -> Django always creates the reverse relationship from one table to another
 
 
 
+Note --> This relatioships are coulumns of others tables in our current table.
+         For Example In our Book Model, we may ahve a one to one , or one to many relationship between the book and the  Author Model.
+         This relationship will be replresnted by way of the primary key of the parent in the child model.
+         In this case since the primary key is the id, The id of the book class is add to the book name and then addedd to the child class , to establish that connection of one to one or one to many.
+         If it is one ot one , then the Book_id will be unique for each and ever author, But if it s one to many , then the Book _id can be repeated across severela authors
+        For examples
+       
+       id   Book       
+       1    HarryPooter
+       2    Percy Jackson
+       
+       id     Author    
+       22     James
+       33     Kiman
+
+i.e
+
+       id     Author    Book_id
+       22     James       1
+       33     Kiman       2
+
+
+
 from django.db import models
 
 
