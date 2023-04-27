@@ -9,11 +9,32 @@ Heres how to create, run, and reverse migrations in Django:
 
 1.Create a migration:
   To create a migration, you can use the makemigrations command. 
+  This command looks for all installed apps in your django project and makes migrtions for each installed app
   This command analyzes your models and creates a migration file that contains the changes to your database schema.
+  This command creates a migration folder.
+  This folder contains files with a numbers sequrnce that indcates the changes to your datatbase, e.g the 0001initial.py indicates 
   
-  'python manage.py makemigrations
+  'python manage.py makemigrations'
+  
+  The  above code in your django project , e.g If it has a Memebers App and  A Products App installed. The Memebers app can have the Customer, Orders and  Cart models and the Products app can have Promotion, Price and  Collection models
+  Django looks at the installed apps In you project and makes migrations fort he models in each app. Here is an example
+  
+  'Migrations for 'MemebersApp':'
+  MembersApp\migrations\0001_initial.py
+    - Create model Customer
+    - Create model Orders
+    - Create model Cart
 
-
+  'Migrations for 'ProductssApp':'
+  MembersApp\migrations\0001_initial.py
+    - Create model Promotions
+    - Create model Price
+    - Create model Collection
+  
+  
+  
+  
+  
 
 2.Run migrations:
   
