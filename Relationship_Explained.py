@@ -42,6 +42,14 @@ There are three types of relationships in Django:
  10 | Magazines  |
 
 
+Here is The Taable representtions. Here One Person Can Only Have One address
+
+       id     Addres    Person
+        2     Grocery   George
+        3     Beauty    Ben
+      
+      
+
 
 
 code
@@ -67,7 +75,7 @@ class Address(models.Model):
 One-to-many (ForeignKey): 
   This relationship is used when each record in one table is related to many records in another table. For example, 
   if you have a model for a person and a model for addres, you might use a one-to-many relationship to connect each 
-  person to its corresponding addreses. If that person has more than one addres.
+  person to its corresponding addreses when that person has more than one addres.
   This can even be used for a video and comment example, where a video can have multiple commentts
   In this example below the person George Has mutiple addresses and we use a one to many fild relationship.
 
@@ -93,9 +101,9 @@ One-to-many (ForeignKey):
 ----+------------+                                           |
                                                              |
   2 | Grocery    | <-----------------------------------------|
-  3 | Beauty     |                                           |
+  3 | Beauty     |<----------------------------------------- |
   4 | Cleaning   |                                           |
-  5 | Stationary |                                           |
+  5 | Stationary |<----------------------------------------- |
   6 | Pets       |                                           |
   7 | Baking     |<------------------------------------------|
   8 | Spices     |                                           |
@@ -103,6 +111,28 @@ One-to-many (ForeignKey):
  10 | Magazines  |<------------------------------------------|
  12 | Racing     |                                           |
  13 | Baking     |                                           |                                         
+
+
+
+Here we can see that George Is associated with many Adddreses. This is a one to many relationship, Where One person can be assosciated with more than one addreses
+
+       id     Address             Person
+  
+        2     Grocery          George
+        3     Beauty           George 
+        4     Cleaning            Ben
+        5     Stationary       George
+        6     Pets                Chris   
+        7     Baking           George
+        8     Spices              Stanley
+        9     Toys                Trump  
+       10     Magazines        George
+       11     Racing              Mary
+       12     Baking              Spencer
+
+
+
+
 
 
 code
@@ -134,6 +164,27 @@ Many-to-many (ManyToManyField):
   and each record in the other table is also related to many records in the first table.
   For example, if you have a model for a book and a model for authors,
   you might use a many-to-many relationship to connect each book to its corresponding authors.
+  
+  
+  
+    Here Each Book Can Be written by more than on  author , such as the Grocery book
+  
+        id    Author           Book
+        2     George        Grocery
+        3     Kimani           Beauty          
+        4     Henry         Grocery
+        5     John             Stationary       
+        6     Chris          Grocery                 
+        
+      
+      Here each author can Hva emore than one Book, such as George Who has written several books,
+        
+       id     Book             Author
+        2     Grocery          George
+        3     Beauty           George 
+        4     Cleaning            Ben
+        5     Stationary       George
+        6     Pets                Chris 
   
   
   
