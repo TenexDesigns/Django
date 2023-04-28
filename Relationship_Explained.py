@@ -303,6 +303,35 @@ Here each oreder item is refernced by multiple orders , but an order can refernc
 Here an one to many relationship in this case, Where an order item can can have multiple products but a product can only be in one order item.
 The same case for ordes,  An order can have multiple oreder items ,
 
+
+Here is the code sample of a many to may relationship that uses the associative class
+Here the Order model and the Product model have a manyToMany relationship. We connect them using an associative class.
+
+    ^^^^ASSOCIATIVE CLASS ^^^^^^
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.PROTECT)
+    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    quantity = models.PositiveSmallIntegerField()
+    unit_price = models.DecimalField(max_digits=6, decimal_places=2)
+
+    
+class Order(models.Model):
+    placed_at = models.DateTimeField(auto_now_add=True)
+    Gender =[('B','Boy'),('G','Girl')]
+    payment_status = models.CharField(
+        max_length=1, choices=Gender, default='B')
+    
+    
+    
+ class Product(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField()
+    description = models.TextField()
+    unit_price = models.DecimalField(max_digits=6, decimal_places=2)
+    inventory = models.IntegerField()
+    last_update = models.DateTimeField(auto_now=True)   
+
+
 ^^^^^^^^^^^^^^^^^^Choise Between ManayToMany or Asssciative Class ^^^^^^^^^^^^^^^^^^^^^^^
 
 The choice between using a ManyToManyField or an associative class to represent a many-to-many relationship 
