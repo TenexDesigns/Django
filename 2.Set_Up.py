@@ -104,10 +104,13 @@ Django Create Project
 Once you have come up with a suitable name for your Django project,
 like mine: my_tennis_club, navigate to where in the file system you want to store the code (in the virtual environment), 
   I will navigate to the myworld folder, and run this command in the command prompt:
+    
 
 django-admin startproject my_tennis_club
 
-
+ _________________---------------------> OR , TO USE THE CURRENT FOLDER AS THE PROJECT FOLDER. You just type the name of the folder you want your project to be installed in and add the fullstop
+  
+               django-admin startproject  storefront .
 
 Django creates a my_tennis_club folder on my computer, with this content:
 
