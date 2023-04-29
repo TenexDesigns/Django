@@ -6,25 +6,28 @@ Creating Objects:
 To create an object in the database, you can simply instantiate a new object and call its save() method. For example:
   
   In this example, we create a new instance of MyModel and set its fields. Then we call the save() method to save the object to the database.
-
+ After calling the save methos, The created object is return to the obj.
 
 from myapp.models import MyModel
 
-# create a new object
-obj = MyModel(field1='value1', field2='value2')  
 
-#method 2   --> This is a more recommeneded  method due to the intereecece i.e "obj. field" . It shows you the fields need to be field
+
+method 1   --> This is a more recommeneded  method due to the intereecece i.e "obj. field" . It shows you the fields need to be field
 obj = MyModel() 
 # obj.field1 = 'value 1'
 # obj.field2 = 'value 2' 
+#obj.featured_product = Product(pk=1)
 # obj.save()
 
+Method 2
+obj = MyModel(field1='value1', field2='value2')  
 
-#Method 3   --> This one takes less code to write.
+
+
+
+Method 3   --> This one takes less code to write.
 #obj = MyModel() 
 #obj.object.create(field1='value 1', field2= 'value 2')
-
-
 obj.save()
 
 
