@@ -1,6 +1,8 @@
 In Django, a queryset cache is a feature that allows the results of a database query to be stored in memory so that subsequent
 identical queries can be served directly from cache instead of being re-evaluated against the database.
 
+Query set cache is only implemented when you get all the items form the database, Not when you get an individual item 
+
 When a queryset is executed, Django will store the result set in the cache.
 The next time the same queryset is executed, Django will first check the cache to see if the result is already there. 
 If it is, the cached result is returned instead of making a new query to the database.
