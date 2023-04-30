@@ -73,6 +73,12 @@ obj = MyModel.objects.get(pk=1)
 # delete the object
 obj.delete()
 
+Method 2
+
+To delete objects more than one objec
+
+Mymodel.object.filter(pk__gt=3).delete()
+
 
 
 
