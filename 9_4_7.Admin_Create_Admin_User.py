@@ -1,5 +1,5 @@
 Create User
-
+********************************************************************************************************************************************************
 To be able to log into the admin application, we need to create a user.
 
 This is done by typing this command in the command view:
@@ -48,8 +48,15 @@ In the browser window, type 127.0.0.1:8000/admin/ in the address bar.
 
 And fill in the form with the correct username and password:
 
+         
+         
+         
+CHANGE USER PASSWORD
+********************************************************************************************************************************************************
+To change the password of an existing puper user, Run the following command
 
 
+    py manage.py changepassword johndoe
 
 Which should result in this user interface:
 
