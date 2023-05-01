@@ -4,7 +4,8 @@ Include Member in the Admin Interface
 
 To include the Member model in the admin interface, we have to tell Django that this model should be visible in the admin interface.
 
-This is done in a file called admin.py, and is located in your app's folder, which in our case is the members folder.
+This is done in a file called admin.py, and is located in your apps folder, which in our case is the members folder.
+Every app has the admin.py file, and this is where we wite our code for customising the administration panel for that app.
 
 Open it, and it should look like this:
 
@@ -31,11 +32,11 @@ admin.site.register(Member)       // Here we regesetr the imported model
 
 
 
-# Method 2
-#from django.contrib import admin     
-#from . import models               // Here we import the models folder from the current folder i.e through the dot --> . //We import the memeber models.
+Method 2
+from django.contrib import admin     
+from . import models               // Here we import the models folder from the current folder i.e through the dot --> . //We import the memeber models.
 
-#admin.site.register(models.Product)      // Here we regesetr the imported model
+admin.site.register(models.Product)      // Here we regesetr the imported model
 
 
 
@@ -73,6 +74,7 @@ admin.site.register(Member)
 
 
 Here the Memebrs will be displayed , by their default implementation.
+
 To change this, we havve to go back to the memeber model class 
 and overide the __str__ method. This method is clalled on every python object, when it is converted to a string. The original method is this          def __str__(self) -> str:
                                                                                                                                                            return super().__str__()
@@ -109,49 +111,22 @@ class Memebr(models.Model):
 
 
 
-
-HERE IS HOW TO CUSTOMISE THE ADMIN SITE
-**************************************************************************************************************************************************
-
-In the projects folder, Go to the Urls.py of the  project  
-
-
-from django.contrib import admin
-from django.urls import path,include
-import debug_toolbar
-
-admin.site.site_header = 'The Gacau Admin site'    // This Changes the site header title
-admin.site.index_title = 'Kimani Ichungwa'         // This changes the index title header.
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('play/', include('stores.urls')),
-    path('__debug__/', include(debug_toolbar.urls)),
-]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+HOW TO DISPLAY SELECTED FIELDS ON THE ADMINE SITE
 ***************************************************************************************************************************************
+This will display only the title and unit_price. This is  Method 1
+
+Method 1
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['title','unit_price']
 
 admin.register(models.Product,ProductAdmin) 
 
+Method 2
 
+@admin.register(models.Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['title','unit_price']
 
 ***************************************************************************************************************************************
 
