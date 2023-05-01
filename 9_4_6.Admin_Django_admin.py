@@ -16,7 +16,7 @@ To enter the admin user interface, start the server by navigating to the /myworl
 py manage.py runserver
 
 
-n the browser window, type 127.0.0.1:8000/admin/ in the address bar.
+In the browser window, type 127.0.0.1:8000/admin/ in the address bar.
 
 
 
