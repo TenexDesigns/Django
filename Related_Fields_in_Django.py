@@ -1,3 +1,18 @@
+The conclusion is that using selecte_related enables you to access the objects of that related model from the current model
+e.g in a one to many relationship between author and book, where book can have many authors, we can use the select related t o access the authors name from the book class
+e.g author_name = Book.autor.name 
+
+
+from django.db import models
+
+class Author(models.Model):
+    name = models.CharField(max_length=255)
+
+class Book(models.Model):
+    title = models.CharField(max_length=255)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+
+
 related fields in django
 ************************************************************************************************************************************************
 
