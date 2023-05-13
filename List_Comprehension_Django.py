@@ -6,6 +6,9 @@ Here are a few examples of how you can use list comprehensions in Django:
 
 1.Transforming QuerySets:
 
+  The first part is waht is returned ,e.g here the user.username is returned, In the Next part we return the productName in uppercase and in the thried part we use the quanttiy and price of the item and return the reuslt.
+  
+  
 # Retrieve a list of usernames from User objects
 usernames = [user.username for user in User.objects.all()]
 
