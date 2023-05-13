@@ -116,6 +116,74 @@ Django application by reducing the number of queries executed and avoiding the N
 
 
 
+prefeting a related product when eagerloading e.g The producs which is a  propety of the items is also prefeched because it willl also be used and accesed
+e.g Cart.objects.prefetch_related('items_ _product').all()
+
+
+In the example Cart.objects.prefetch_related('items__product').all(), the purpose of prefetching the product field in the items relationship 
+is to optimize the database query by reducing the number of database hits and improving performance.
+
+Lets break down the example to understand it better:
+
+
+
+Cart.objects.prefetch_related('items__product').all()
+
+
+
+Cart.objects.all() retrieves all the Cart objects from the database.
+prefetch_related('items__product') specifies that we want to prefetch the product field in the items relationship.
+
+
+
+By prefetching the product field, Django will optimize the query by performing a "JOIN" operation between the Cart and Item tables and fetching 
+the associated Product objects in a single query, rather than retrieving them one by one.
+
+This optimization is useful in scenarios where you have multiple Cart objects, each with multiple Item objects, and each Item has a related Product.
+Without prefetching, accessing the product field for each Item would result in a separate database query for each Item,
+leading to the N+1 query problem. Prefetching solves this issue by fetching all the related Product objects in one go.
+
+
+
+
+By using prefetch_related in this context, you ensure that the product field for each Item in all the Cart objects is loaded efficiently,
+minimizing database hits and improving performance.
+
+Once the query is executed, you can access the product field of each Item without triggering additional database queries. For example:
+
+
+carts = Cart.objects.prefetch_related('items__product').all()
+
+for cart in carts:
+    for item in cart.items.all():
+        # Access the product field without additional queries
+        product_name = item.product.name
+        # ... do something with the product name
+
+
+
+
+
+In summary, using prefetch_related with the items__product lookup in eager loading allows you to optimize the query and efficiently 
+load the product field for all the Item objects associated with the Cart objects in a single database operation.
+
+e.g
+
+id:1
+items[
+    id:1
+    products:{
+      id:1,
+      name:juice,
+      price:20
+    
+    }
+    quantity:3
+  
+  ],
+total_price:60
+
+
 
 
 MANY tO MANY RELATIONSHIP
